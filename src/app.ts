@@ -1,6 +1,6 @@
 import AutoLoad, { AutoloadPluginOptions } from "@fastify/autoload";
 import { FastifyPluginAsync } from "fastify";
-import v1 from "./api/v1";
+import v1 from "./routes/v1";
 import { cpus } from "os";
 import { join } from "path";
 

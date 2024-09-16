@@ -11,17 +11,8 @@
     "allowSyntheticDefaultImports": true,
     "paths": {
       "@config": ["config/index"],
-      // "@helpers": ["helpers/index"],
-      "@interactors": ["interactors/index"]
-      // "@mappers": ["mappers/index"]
-      // "@middlewares": ["middlewares/index"],
-      // "@services": ["services/index"],
-      // "@serializers": ["serializers/index"],
-      // "@database": ["database/index"],
-      // "@types": ["types/index"],
-      // "@utils": ["utils/index"],
-      // "@jobs": ["jobs/index"],
-      // "@uploads": ["uploads"]
+      "@helpers": ["helpers/index"],
+      "@controllers": ["controllers/index"]
     },
     "sourceMap": true,
     "types": ["dotenv"]
