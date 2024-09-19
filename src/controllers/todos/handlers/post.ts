@@ -1,3 +1,4 @@
+import { handleResponse, responseType } from "@helpers";
 import db from "database";
 import { FastifyReply, FastifyRequest } from "fastify";
 
@@ -11,12 +12,17 @@ export async function POST(
 
     const todo = await db("todos").returning("*").insert({ todo_name: name });
     console.log("🚀 ~ GET_ALL ~ todos:", todo);
-    return reply.send({
-      data: todo,
+    // return reply.send({
+    //   data: todo,
+    // });
+    return handleResponse(request, reply, responseType?.OK, {
+      data: {todo},
     });
   } catch (error: any) {
-    return reply.send({
-      data: [],
+    return handleResponse(request, reply, responseType?.INTERNAL_SERVER_ERROR, {
+      error: {
+        message: responseType?.INTERNAL_SERVER_ERROR,
+      },
     });
   }
 }
