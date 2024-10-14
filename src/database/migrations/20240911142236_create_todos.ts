@@ -4,6 +4,7 @@ export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable("todos", (table: any) => {
     table.uuid("id").primary().defaultTo(knex.fn.uuid());
     table.uuid("user_id").references("id").inTable("users");
+    table.uuid("tag_id").references("id").inTable("tags");
     table.string("todo_name").notNullable();
     table.string("is_completed").defaultTo(true);
   });

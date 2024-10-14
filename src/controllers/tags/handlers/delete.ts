@@ -9,18 +9,17 @@ export async function DELETE_BY_ID(
   try {
     const { id } = request?.params;
 
-    const user = await db("users").select().where({ id: id }).del();
-    console.log("🚀 ~ GET_ALL ~ user:", user);
-    return reply.send({
-      data: user,
-      message: user >= 1 ? "Deleted Successfully!" : "Deleted Failed!",
-    });
-    
-  } catch (error: any) {
+    const tags = await db("tags").select().where({ id: id }).del();
+    console.log("🚀 ~ GET_ALL ~ tags:", tags);
     // return reply.send({
-    //   data: 0,
-    //   message: "Deleted Failed!",
+    //   data: todo,
+    //   message: todo >= 1 ? "Deleted Successfully!" : "Deleted Failed!",
     // });
+
+    return handleResponse(request, reply, responseType?.OK, {
+      data: tags,
+    });
+  } catch (error: any) {
     return handleResponse(request, reply, responseType?.INTERNAL_SERVER_ERROR, {
       error: {
         message: responseType?.INTERNAL_SERVER_ERROR,
